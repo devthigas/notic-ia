@@ -24,7 +24,7 @@
 
   <div class="form-group">
     <%= form.label :body, "Corpo da postagem", class: "form-label" %>
-    <%= form.text_area :body, class: "form-control", placeholder: "Escreva aqui todo o conteúdo detalhado da notícia..." %>
+    <%= form.text_area :body, class: "form-control", placeholder: "Escreva aqui todo o conteúdo detalhado da notícia...", data: { controller: "markdown-editor" } %>
   </div>
 
   <div class="form-actions">
