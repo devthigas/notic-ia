@@ -15,8 +15,10 @@
     <%= markdown(@post.body) %>
   </div>
 
-  <div class="post-actions">
-    <%= link_to "Editar notícia", edit_post_path(@post), class: "btn btn-secondary" %>
-    <%= button_to "Excluir notícia", @post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia permanentemente?" } }, class: "btn btn-danger" %>
-  </div>
+  <% if authenticated? %>
+    <div class="post-actions">
+      <%= link_to "Editar notícia", edit_post_path(@post), class: "btn btn-secondary" %>
+      <%= button_to "Excluir notícia", @post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia permanentemente?" } }, class: "btn btn-danger" %>
+    </div>
+  <% end %>
 </article>

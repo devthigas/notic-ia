@@ -45,7 +45,12 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 12.42A9 9 0 1 1 11.58 3a7.002 7.002 0 0 0 10.17 9.42 Z" />
             </svg>
           </button>
-          <a href="<%= new_post_path %>" class="nav-button">Nova Postagem</a>
+          <% if authenticated? %>
+            <a href="<%= new_post_path %>" class="nav-button">Nova Postagem</a>
+            <%= button_to "Sair", session_path, method: :delete, class: "nav-link", style: "background: none; border: none; cursor: pointer; font-weight: 500; padding: 0;" %>
+          <% else %>
+            <%= link_to "Entrar", new_session_path, class: "nav-link" %>
+          <% end %>
         </nav>
       </div>
     </header>

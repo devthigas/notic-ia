@@ -14,10 +14,12 @@
     <%= link_to post, class: "post-item-read-more" do %>
       Ler artigo completo <span>→</span>
     <% end %>
-    <div class="post-item-actions">
-      <%= link_to "Editar", edit_post_path(post), class: "post-item-action-link" %>
-      <span class="post-item-action-sep">•</span>
-      <%= button_to "Excluir", post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia?" }, class: "post-item-action-form" }, class: "post-item-action-btn" %>
-    </div>
+    <% if authenticated? %>
+      <div class="post-item-actions">
+        <%= link_to "Editar", edit_post_path(post), class: "post-item-action-link" %>
+        <span class="post-item-action-sep">•</span>
+        <%= button_to "Excluir", post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia?" }, class: "post-item-action-form" }, class: "post-item-action-btn" %>
+      </div>
+    <% end %>
   </footer>
 </article>

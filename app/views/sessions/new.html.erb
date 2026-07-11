@@ -1,0 +1,47 @@
+<% content_for :title, "Acesso ao Painel | Notic.ia" %>
+
+<div class="form-card animate-fade-in" style="max-width: 480px; margin: 4rem auto;">
+  <h1 class="form-title" style="margin-bottom: 1.5rem;">Entrar no Notic.ia</h1>
+
+  <% if flash[:alert] %>
+    <div class="error-summary" style="margin-bottom: 1.5rem;">
+      <div class="error-title">Acesso Negado</div>
+      <p style="font-size: 0.9rem; color: var(--text-secondary);"><%= flash[:alert] %></p>
+    </div>
+  <% end %>
+  
+  <% if flash[:notice] %>
+    <div class="error-summary" style="margin-bottom: 1.5rem; background-color: rgba(22, 163, 74, 0.05); border-left-color: var(--success);">
+      <div class="error-title" style="color: var(--success);">Sucesso</div>
+      <p style="font-size: 0.9rem; color: var(--text-secondary);"><%= flash[:notice] %></p>
+    </div>
+  <% end %>
+
+  <%= form_with url: session_path do |form| %>
+    <div class="form-group">
+      <%= form.label :email_address, "Endereço de E-mail", class: "form-label" %>
+      <%= form.email_field :email_address, 
+                           required: true, 
+                           autofocus: true, 
+                           autocomplete: "username", 
+                           placeholder: "seu@email.com", 
+                           value: params[:email_address],
+                           class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password, "Senha", class: "form-label" %>
+      <%= form.password_field :password, 
+                              required: true, 
+                              autocomplete: "current-password", 
+                              placeholder: "Sua senha de acesso", 
+                              maxlength: 72,
+                              class: "form-control" %>
+    </div>
+
+    <div class="form-actions" style="justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1rem;">
+      <%= link_to "Esqueceu a senha?", new_password_path, class: "post-item-action-link" %>
+      <%= form.submit "Entrar", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

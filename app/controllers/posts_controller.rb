@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   protect_from_forgery with: :null_session, if: -> { request.format.json? }
+  allow_unauthenticated_access only: [ :index, :show ]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json

@@ -117,12 +117,14 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     
     if (name === "create_post") {
       const { title, description, body } = args;
+      const token = process.env.NOTIC_IA_API_TOKEN || "noticia_secret_mcp_token_2026";
       
       const response = await fetch(`${API_BASE_URL}/posts.json`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           post: {
