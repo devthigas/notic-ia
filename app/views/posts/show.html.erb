@@ -1,12 +1,12 @@
-<% content_for :title, "#{@post.title} | Notic-IA" %>
+<% content_for :title, "#{@post.title} | Notic.ia" %>
 
-<article class="post-detail">
+<article class="post-detail" data-controller="copy-code">
   <%= link_to posts_path, class: "post-back-link" do %>
-    <span>←</span> Voltar para a página inicial
+    <span>←</span> Voltar para o início
   <% end %>
 
   <header class="post-header">
-    <span class="post-date">Publicado em <%= @post.created_at.strftime("%d/%m/%Y às %H:%M") %></span>
+    <span class="post-date">Publicado em <%= @post.created_at.strftime("%d de %b, %Y às %H:%M") %></span>
     <h1 class="post-title"><%= @post.title %></h1>
     <p class="post-description"><%= @post.description %></p>
   </header>
@@ -16,7 +16,7 @@
   </div>
 
   <div class="post-actions">
-    <%= link_to "Editar Notícia", edit_post_path(@post), class: "btn btn-secondary" %>
-    <%= button_to "Excluir Notícia", @post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia permanentemente?" } }, class: "btn btn-danger" %>
+    <%= link_to "Editar notícia", edit_post_path(@post), class: "btn btn-secondary" %>
+    <%= button_to "Excluir notícia", @post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia permanentemente?" } }, class: "btn btn-danger" %>
   </div>
 </article>

@@ -1,20 +1,23 @@
-<div id="<%= dom_id post %>" class="post-card">
-  <div class="card-header">
-    <span class="card-meta">Notícia • <%= post.created_at.strftime("%d/%m/%Y") %></span>
-    <h3 class="card-title"><%= post.title %></h3>
-    <p class="card-description"><%= post.description %></p>
-  </div>
-  <div class="card-footer">
-    <%= link_to post, class: "read-more" do %>
-      Ler mais <span>→</span>
-    <% end %>
-    <div class="card-actions">
-      <%= link_to edit_post_path(post), class: "btn-icon", title: "Editar" do %>
-        ✏️
-      <% end %>
-      <%= button_to post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia?" } }, class: "btn-icon delete", title: "Excluir" do %>
-        🗑️
-      <% end %>
+<article id="<%= dom_id post %>" class="post-item">
+  <header class="post-item-header">
+    <div class="post-item-meta">
+      <span class="post-item-date"><%= post.created_at.strftime("%d de %b, %Y") %></span>
     </div>
+    <h2 class="post-item-title">
+      <%= link_to post.title, post %>
+    </h2>
+  </header>
+  <div class="post-item-content">
+    <p class="post-item-description"><%= post.description %></p>
   </div>
-</div>
+  <footer class="post-item-footer">
+    <%= link_to post, class: "post-item-read-more" do %>
+      Ler artigo completo <span>→</span>
+    <% end %>
+    <div class="post-item-actions">
+      <%= link_to "Editar", edit_post_path(post), class: "post-item-action-link" %>
+      <span class="post-item-action-sep">•</span>
+      <%= button_to "Excluir", post, method: :delete, form: { data: { turbo_confirm: "Tem certeza que deseja excluir esta notícia?" }, class: "post-item-action-form" }, class: "post-item-action-btn" %>
+    </div>
+  </footer>
+</article>

@@ -1,8 +1,8 @@
 <% content_for :title, "Notic-IA | Seu Portal de Notícias sobre IA" %>
 
 <section class="hero">
-  <h1>Portal Notic-IA</h1>
-  <p>Fique por dentro das últimas novidades, avanços e discussões sobre o mundo da Inteligência Artificial.</p>
+  <h1>Notic.ia</h1>
+  <p>Perspectivas, análises e crônicas semanais sobre a evolução da Inteligência Artificial.</p>
 </section>
 
 <section class="search-section">
@@ -20,7 +20,7 @@
   <% end %>
 </section>
 
-<div class="posts-grid" id="posts">
+<div class="posts-list" id="posts">
   <% if @posts.any? %>
     <%= render @posts %>
   <% else %>
