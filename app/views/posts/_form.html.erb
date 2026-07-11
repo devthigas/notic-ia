@@ -1,0 +1,34 @@
+<%= form_with(model: post, class: "post-form") do |form| %>
+  <% if post.errors.any? %>
+    <div class="error-summary">
+      <h3 class="error-title">
+        <%= post.errors.count == 1 ? "1 erro impediu" : "#{post.errors.count} erros impediram" %> a postagem de ser salva:
+      </h3>
+      <ul class="error-list">
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, "Nome / Título", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Ex: Nova IA da Google supera limites de processamento..." %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, "Descrição rápida", class: "form-label" %>
+    <%= form.text_field :description, class: "form-control", placeholder: "Uma breve introdução que chame a atenção do leitor" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :body, "Corpo da postagem", class: "form-label" %>
+    <%= form.text_area :body, class: "form-control", placeholder: "Escreva aqui todo o conteúdo detalhado da notícia..." %>
+  </div>
+
+  <div class="form-actions">
+    <%= link_to "Cancelar", posts_path, class: "btn btn-secondary" %>
+    <%= form.submit "Salvar Postagem", class: "btn btn-primary" %>
+  </div>
+<% end %>
