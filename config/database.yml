@@ -26,3 +26,15 @@ production:
   primary:
     adapter: postgresql
     url: <%= Rails.application.credentials.dig(:database, :url) || ENV["DATABASE_URL"] %>
+  cache:
+    adapter: postgresql
+    url: <%= Rails.application.credentials.dig(:database, :url) || ENV["DATABASE_URL"] %>
+    migrations_paths: db/cache_migrate
+  queue:
+    adapter: postgresql
+    url: <%= Rails.application.credentials.dig(:database, :url) || ENV["DATABASE_URL"] %>
+    migrations_paths: db/queue_migrate
+  cable:
+    adapter: postgresql
+    url: <%= Rails.application.credentials.dig(:database, :url) || ENV["DATABASE_URL"] %>
+    migrations_paths: db/cable_migrate
